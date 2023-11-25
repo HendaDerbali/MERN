@@ -1,0 +1,35 @@
+.con {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+
+.box {
+    margin: "20px"
+}    
+
+.btn {
+    padding: 12px 15px; 
+    font-family: Arial, sans-serif; 
+    font-weight: bold;
+    background: linear-gradient(30deg, rebeccapurple, magenta); 
+    color: #fff; 
+    border: none;
+}
+
+
+.show {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.box {
+    display: inline-block;
+    margin: 05px;
+    height: 200px; 
+    width: 200px;
+}
