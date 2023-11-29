@@ -24,7 +24,7 @@ return (
   
 
     <div>
-      {Array.isArray(Pokemon) && Pokemon.map((pokemon, index) => (
+     {Pokemon.map((pokemon, index) => (
         <p key={index}>{pokemon.name}</p>
       ))}
     </div>
