@@ -5,10 +5,11 @@ import { useParams } from 'react-router-dom'
 
 export const OneProduct = () => {
     const { id } = useParams()
-    const [thisProduct, setThisProduct] = useState()
+    const [thisProduct, setThisProduct] = useState({})
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/product/" + id)
+        // axios.get("http://localhost:5000/api/product/" + id)   use this or the next ( same thing)
+        axios.get(`http://localhost:5000/api/product/${id}`)
             .then(res => {
                 console.log(res.data)
                 setThisProduct(res.data)

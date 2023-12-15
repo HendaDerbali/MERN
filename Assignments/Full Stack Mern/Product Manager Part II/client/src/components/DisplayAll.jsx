@@ -4,8 +4,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-export const DisplayAll = () => {
-    const [allProducts, setAllProducts] = useState([]); // used only later to map list of prodcuts , make sure to do it only it referent component
+export const DisplayAll = (props) => {
+    const { allProducts, setAllProducts } = props;
 
 useEffect(() => {
         axios.get("http://localhost:5000/api/product")
@@ -17,9 +17,7 @@ useEffect(() => {
                 console.log(err)
             })
 
-    }, [])   
-
-
+    }, [setAllProducts])   
 
 
 return (
@@ -28,7 +26,7 @@ return (
     {
         allProducts.map((oneProduct, index) => {
             return (
-                <div key={index}>
+                <div key={oneProduct._id || index}>
                     <ul>
                         <li>
                         <Link to={`/products/${oneProduct._id}`} >{oneProduct.Title}</Link>        

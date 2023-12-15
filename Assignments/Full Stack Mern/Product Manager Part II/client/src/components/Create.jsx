@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { all } from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom'
 
-const Create = () => {
+
+
+
+const Create = (props) => {
+    const { allProducts, setAllProducts } = props;
+
+    const nav = useNavigate()
+
+
+
     const [inputObject, setInputObject] = useState({
         Title: '',
         Price: '',
         Description: ''
     });
     const [errors, setErrors] = useState([]);
+
 
 
     const handleInputs = (e) => {
@@ -25,13 +36,17 @@ const Create = () => {
             .post('http://localhost:5000/api/product/', inputObject)
             .then((res) => {
                 console.log(res.data);
+                // Add to new value to the ist , without refresh
+                setAllProducts([...allProducts, res.data]);
+                console.log('Updated allProducts:', allProducts);
                 //set post request to "" to clear our Form after sucessfully submission 
                 setInputObject({
                     Title: '',
                     Price: '',
                     Description: ''
                 // may be we have to redirect it if neede : use useNavigate
-                })
+            })
+            nav("/products")
             })
             .catch((err) => {
                 const errorResponse = err.response.data.errors;

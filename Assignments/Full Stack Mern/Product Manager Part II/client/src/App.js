@@ -7,13 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+  
   return (
     <div className="App">
 
       <Routes>
         {/* Main page */}
         <Route path="/products" element={<Main />} />
-        <Route path="/products/:id" element={<OneProduct />} />
+        <Route path="/products:id" element={<OneProduct />} />
 
       </Routes>
 
