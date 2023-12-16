@@ -15,7 +15,7 @@ function App() {
       <Routes>
 
         {/* Main page */}
-        <Route path="/products" element={<Main />} />
+        <Route path="/" element={<Main />} />
         {/* Get One Product :  */}
         <Route path="/products/:id" element={<OneProduct />} />
         {/* Update One Product :  */}

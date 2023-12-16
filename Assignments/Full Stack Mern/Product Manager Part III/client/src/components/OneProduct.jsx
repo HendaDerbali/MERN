@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 
@@ -60,6 +61,10 @@ export const OneProduct = () => {
             ) : (
                 <h3>Loading...</h3>
             )}
+
+
+            {/* // Link to go Back : */}
+            <Link to={'/'}> Go Back </Link>
         </div>
     )
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios, { all } from 'axios';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom'
@@ -35,10 +35,14 @@ const Create = (props) => {
         axios
             .post('http://localhost:5000/api/product/', inputObject)
             .then((res) => {
-                console.log(res.data);
-                // Add to new value to the ist , without refresh
-                setAllProducts([...allProducts, res.data]);
-                console.log('Updated allProducts:', allProducts);
+                // this cosole log is to show me the structure of my API response , si i use after that : res.data   or res.data.newProduct
+                console.log('My API response is', res)
+                console.log('My data in API response contains ', res.data);
+                console.log('My new Object is located hier and  it is :', res.data.newProduct);
+                // Add to new value to the List , without refresh
+                //Use : res.data.newProduct  because my data is stored in res.data.newProduct
+                setAllProducts([...allProducts, res.data.newProduct]);
+                console.log('New List of All products is :', [...allProducts, res.data.newProduct]);
                 //set post request to "" to clear our Form after sucessfully submission 
                 setInputObject({
                     Title: '',
@@ -46,7 +50,7 @@ const Create = (props) => {
                     Description: ''
                 })
                 // may be we have to redirect it if neede : use useNavigate
-                nav("/products")
+                nav("/")
             })
             .catch((err) => {
                 const errorResponse = err.response.data.errors;

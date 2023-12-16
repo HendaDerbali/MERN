@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -71,9 +72,9 @@ export const Update = () => {
                     Title: '',
                     Price: '',
                     Description: ''
-                    // may be we have to redirect it if neede : use useNavigate
                 })
-                nav("/products")
+             // may be we have to redirect it if neede : use useNavigate
+            nav("/")
             })
             .catch((err) => {
                 const errorResponse = err.response.data.errors;
@@ -111,6 +112,9 @@ export const Update = () => {
                 <Button variant="primary" type="submit">Create</Button>
             </Form>
 
+
+            {/* // Link to go Back : */}
+            <Link to={'/'}> Go Back </Link>
         </div>
     )
 }
